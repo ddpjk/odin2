@@ -1161,10 +1161,25 @@ class taskCog(commands.Cog):
 									)
 							     
 						else :
+							cut_message = await ctx.send(f""```" + bossData[i][0] + bossData[i][4] + "```" + '\n' + '컷' + '>>' + ' ' + '⚔️' + ' ' + '<< 클릭' ", tts=False)
+									
+							for emoji in emoji_list:
+								await cut_message.add_reaction(emoji)
+								
+							def reaction_check(reaction, user):
+								return str(reaction) in emoji_list
+							try:
+								reaction, user = await self.bot.wait_for('reaction_add', check = reaction_check, timeout = 300)
+							except asyncio.TimeoutError:
+								return await ctx.send(f"시간이 초과됐습니다. 수동으로 입력해주세요!!")
 							embed = discord.Embed(
 									description= "```" + bossData[i][0] + bossData[i][4] + "```" + '\n' + '컷' + '>>' + ' ' + '⚔️' + ' ' + '<< 클릭' ,
 									color=0x00ff00
 									)
+							if str(reaction) == "⚔️":
+								print ('bossData[i][0]', '컷')
+							else:
+								print ('bossData[i][0]', '컷')
 						await self.bot.get_channel(channel).send(embed=embed, tts=False)
 						try:
 							if basicSetting[21] == "1":
