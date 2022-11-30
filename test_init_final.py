@@ -1175,7 +1175,7 @@ class taskCog(commands.Cog):
 						except:
 							pass
 						def on_reaction_check(reaction, user):
-							ruturn str(reaction) in emoji_list
+							return str(reaction) in emoji_list
 						try:
 							reaction, user = await self.bot.wait_for('reaction_add', check = reaction_check, timeout = 300)
 						except asyncio.TimeoutError:
