@@ -1161,8 +1161,10 @@ class taskCog(commands.Cog):
 									)
 							     
 						else :
-							cut_message = await ctx.send(f""```" + bossData[i][0] + bossData[i][4] + "```" + '\n' + '컷' + '>>' + ' ' + '⚔️' + ' ' + '<< 클릭' ", tts=False)
-									
+							cut_message = [embed = discord.Embed(
+									description= "```" + bossData[i][0] + bossData[i][4] + "```" + '\n' + '컷' + '>>' + ' ' + '⚔️' + ' ' + '<< 클릭' ,
+									color=0x00ff00
+									)]
 							for emoji in emoji_list:
 								await cut_message.add_reaction(emoji)
 								
