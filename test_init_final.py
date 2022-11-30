@@ -1155,8 +1155,6 @@ class taskCog(commands.Cog):
 						bossDateString[i] = '9999-99-99'
 						bossTime[i] = now+datetime.timedelta(days=365)
 						cut_message = await reaction.message.channel.send(bossData[i][0] + ' ' + '컷')
-						for emoji in emoji_list:
-							await cut_message.add_reaction(emoji)
 						if bossData[i][6] != '' :
 							embed = discord.Embed(
 									description= "```" + bossData[i][0] + bossData[i][4] + '\n<' + bossData[i][6] + '>```' ,
@@ -1174,6 +1172,7 @@ class taskCog(commands.Cog):
 								await PlaySound(self.bot.voice_clients[0], './sound/' + bossData[i][0] + '젠.mp3')
 						except:
 							pass
+						
 						
 
 					################ 보스 자동 멍 처리 ################ 
