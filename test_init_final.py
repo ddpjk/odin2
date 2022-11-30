@@ -1162,7 +1162,7 @@ class taskCog(commands.Cog):
 							     
 						else :
 							embed = discord.Embed(
-									description= "```" + bossData[i][0] + bossData[i][4] + "```" + '\n' + ' ' + '컷' + '>>' + ' ' + '⚔️' + ' ' + '<<클릭' ,
+									description= "```" + bossData[i][0] + bossData[i][4] + "```" + '\n' + ``` + '컷' + '>>' + ' ' + '⚔️' + ' ' + '<< 클릭' ,
 									color=0x00ff00
 									)
 						await self.bot.get_channel(channel).send(embed=embed, tts=False)
@@ -1171,6 +1171,8 @@ class taskCog(commands.Cog):
 								await PlaySound(self.bot.voice_clients[0], './sound/' + bossData[i][0] + '젠.mp3')
 						except:
 							pass
+						
+							
 
 					################ 보스 자동 멍 처리 ################ 
 					if bossMungFlag[i] == True:
@@ -1355,7 +1357,7 @@ class mainCog(commands.Cog):
 					if basicSetting[7] == text_channel.id:
 						curr_guild_info = guild
 
-			emoji_list : list = ["⚔️", "❌"]
+			emoji_list : list = ["⭕", "❌"]
 			guild_error_message = await ctx.send(f"이미 **[{curr_guild_info.name}]** 서버 **[{setting_channel_name}]** 채널이 명령어 채널로 설정되어 있습니다.\n해당 채널로 명령어 채널을 변경 하시려면 ⚔️ 그대로 사용하시려면 ❌ 를 눌러주세요.\n(10초이내 미입력시 기존 설정 그대로 설정됩니다.)", tts=False)
 
 			for emoji in emoji_list:
@@ -1368,7 +1370,7 @@ class mainCog(commands.Cog):
 			except asyncio.TimeoutError:
 				return await ctx.send(f"시간이 초과됐습니다. **[{curr_guild_info.name}]** 서버 **[{setting_channel_name}]** 채널에서 사용해주세요!")
 
-			if str(reaction) == "⚔️":
+			if str(reaction) == "⭕":
 				if ctx.voice_client is not None:
 					await ctx.voice_client.disconnect(force=True)
 				basicSetting[6] = ""
