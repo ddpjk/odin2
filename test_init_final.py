@@ -1156,14 +1156,13 @@ class taskCog(commands.Cog):
 						bossTime[i] = now+datetime.timedelta(days=365)
 						if bossData[i][6] != '' :
 							embed = discord.Embed(
-									description= "```" + bossData[i][0] + bossData[i][4] + '⚔️' '\n<' + bossData[i][6] + '>```' ,
+									description= "```" + bossData[i][0] + bossData[i][4] + '\n<' + bossData[i][6] + '>```' ,
 									color=0x00ff00
 									)
-							embed.add_field(name = "⚔️")
 							     
 						else :
 							embed = discord.Embed(
-									description= "```" + bossData[i][0] + bossData[i][4] + '⚔️⚔️' + "```" ,
+									description= "```" + bossData[i][0] + bossData[i][4] + "```" + '\n' + '컷' + '⚔️' +  '<<클릭' ,
 									color=0x00ff00
 									)
 						await self.bot.get_channel(channel).send(embed=embed, tts=False)
