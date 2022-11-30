@@ -1174,15 +1174,7 @@ class taskCog(commands.Cog):
 								await PlaySound(self.bot.voice_clients[0], './sound/' + bossData[i][0] + '젠.mp3')
 						except:
 							pass
-						def on_reaction_check(reaction, user):
-							return str(reaction) in emoji_list
-						try:
-							reaction, user = await self.bot.wait_for('reaction_add', check = reaction_check, timeout = 300)
-						except asyncio.TimeoutError:
-							return await ctx.send(f"시간이 초과됐습니다. 수동기입 해주세요!!")	
-
-							if str(reaction) == "⚔️":
-								return await reaction.message.channel.send(bossData[i][0] + ' ' + '컷')
+						
 
 					################ 보스 자동 멍 처리 ################ 
 					if bossMungFlag[i] == True:
