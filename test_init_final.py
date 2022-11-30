@@ -1154,6 +1154,9 @@ class taskCog(commands.Cog):
 						bossTimeString[i] = '99:99:99'
 						bossDateString[i] = '9999-99-99'
 						bossTime[i] = now+datetime.timedelta(days=365)
+						cut_message = await reaction.message.channel.send(bossData[i][0] + ' ' + '컷')
+						for emoji in emoji_list:
+							await cut_message.add_reaction(emoji)
 						if bossData[i][6] != '' :
 							embed = discord.Embed(
 									description= "```" + bossData[i][0] + bossData[i][4] + '\n<' + bossData[i][6] + '>```' ,
@@ -1171,11 +1174,15 @@ class taskCog(commands.Cog):
 								await PlaySound(self.bot.voice_clients[0], './sound/' + bossData[i][0] + '젠.mp3')
 						except:
 							pass
-						async def on_reaction_add(reaction, user):
-							if user.bot == 1:
-								return None
-							if str(reaction.emoji) == "⚔️":
-								await reaction.message.channel.send(bossData[i][0] + ' ' + '컷')
+						def on_reaction_check(reaction, user):
+							ruturn str(reaction) in emoji_list
+						try:
+							reaction, user = await self.bot.wait_for('reaction_add', check = reaction_check, timeout = 300)
+						except asyncio.TimeoutError:
+							return await ctx.send(f"시간이 초과됐습니다. 수동기입 해주세요!!")	
+
+							if str(reaction) == "⚔️":
+								return await reaction.message.channel.send(bossData[i][0] + ' ' + '컷')
 
 					################ 보스 자동 멍 처리 ################ 
 					if bossMungFlag[i] == True:
