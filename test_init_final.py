@@ -1159,10 +1159,8 @@ class taskCog(commands.Cog):
 									description= "```" + bossData[i][0] + bossData[i][4] + '\n<' + bossData[i][6] + '>```' ,
 									color=0x00ff00
 									)
-							      embed.add_field("```" + bossData[i][0] + "컷" + "⚔️")
-									name="",
-									value= tmp_boss_information[0],
-									inline = False
+							      embed.add_field(
+								      	description= "```" + bossData[i][0] + "컷" + "⚔️"
 									)
 						else :
 							embed = discord.Embed(
