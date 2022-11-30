@@ -1171,8 +1171,11 @@ class taskCog(commands.Cog):
 								await PlaySound(self.bot.voice_clients[0], './sound/' + bossData[i][0] + '젠.mp3')
 						except:
 							pass
-						if str(reaction) == "⚔️":
-							await ctx.send(bossData[i][0] + '컷')
+						async def on_reaction_add(reaction, user):
+							if user.bot == 1:
+								return None
+							if str(reaction) == "⚔️":
+								await reaction.message.channel.send(bossData[i][0] + '컷')
 
 					################ 보스 자동 멍 처리 ################ 
 					if bossMungFlag[i] == True:
