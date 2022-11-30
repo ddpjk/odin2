@@ -1080,6 +1080,7 @@ class taskCog(commands.Cog):
 						if fixed_bossTime[i] <= priv and fixed_bossTime[i] > now and fixed_bossFlag0[i] == True :
 							fixed_bossFlag[i] = True
 							await self.bot.get_channel(channel).send("```" + fixed_bossData[i][0] + ' ' + basicSetting[1] + '분 전 ' + fixed_bossData[i][3] +' [' +  fixed_bossTime[i].strftime('%H:%M:%S') + ']```', tts=False)
+								embed.add_field(name = "😍 당첨", value =  f"```fix\n{', '.join(result_ladder)}```")
 							try:
 								if basicSetting[21] == "1":
 									await PlaySound(self.bot.voice_clients[0], './sound/' + fixed_bossData[i][0] + '알림.mp3')
@@ -1145,6 +1146,7 @@ class taskCog(commands.Cog):
 					################ 보스 젠 시간 확인 ################ 
 					if bossTime[i] <= now and bossFlag0[i] == True and bossFlag[i] == True :
 						#print ('if ', bossTime[i])
+						emoji_list = ["⚔️"]
 						bossMungFlag[i] = True
 						tmp_bossTime[i] = bossTime[i]
 						tmp_bossTimeString[i] = tmp_bossTime[i].strftime('%H:%M:%S')
@@ -1156,6 +1158,11 @@ class taskCog(commands.Cog):
 							embed = discord.Embed(
 									description= "```" + bossData[i][0] + bossData[i][4] + '\n<' + bossData[i][6] + '>```' ,
 									color=0x00ff00
+									)
+							      embed.add_field("```" + bossData[i][0] + "컷" + "⚔️")
+									name="",
+									value= tmp_boss_information[0],
+									inline = False
 									)
 						else :
 							embed = discord.Embed(
