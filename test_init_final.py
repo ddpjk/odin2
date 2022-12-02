@@ -1163,6 +1163,9 @@ class taskCog(commands.Cog):
 									description= "```" + bossData[i][0] + bossData[i][4] + "```" + "\n" + bossData[i][0] + " 컷 >> " + "⚔️" + " << 클릭" ,
 									color=0x00ff00
 									)
+							cut_msg = await message.channel.send(embed=embed)
+							await cut_msg.add_reation("⚔️")
+							
 														
 						await self.bot.get_channel(channel).send(embed=embed, tts=False)
 						try:
