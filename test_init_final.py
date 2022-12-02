@@ -1160,6 +1160,7 @@ class taskCog(commands.Cog):
 									color=0x00ff00
 									)
 						else :
+							await ctx.send(f'"```" {bossData[i][0]} {bossData[i][4]} "\n" {bossData[i][0]} 컷 >> "⚔️" << 클릭 "```"')
 							def reaction_check(reaction, user):
 								return	(reaction.message.id == cut_message.id) and (user.id == ctx.author.id) and (str(reaction) in emoji_list)
 							if str(reaction) == "⚔️":
