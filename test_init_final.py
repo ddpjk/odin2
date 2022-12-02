@@ -1153,7 +1153,7 @@ class taskCog(commands.Cog):
 						bossTimeString[i] = '99:99:99'
 						bossDateString[i] = '9999-99-99'
 						bossTime[i] = now+datetime.timedelta(days=365)
-						cut_message =  await ctx.send(f'"```" + bossData[i][0] + bossData[i][4] + "```" + "\n" + bossData[i][0] + ' ' + '컷' + '>>' + ' ' + "⚔️" + ' ' + '<< 클릭'')
+						cut_message =  await ctx.send(f'"```" + bossData[i][0] + bossData[i][4] + "```" + "\n" + bossData[i][0] + " " + "컷" + ">>" + " " + "⚔️" + " " + "<< 클릭"')
 						if bossData[i][6] != '' :
 							embed = discord.Embed(
 									description= "```" + bossData[i][0] + bossData[i][4] + '\n<' + bossData[i][6] + '>```' ,
