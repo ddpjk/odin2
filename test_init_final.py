@@ -266,9 +266,6 @@ def init():
 	for i in range(fixed_inputData.count('\r')):
 		fixed_inputData.remove('\r')
 
-	for i in range(item_inputData.count('\r')):
-		item_inputData.remove('\r')
-
 	del(command_inputData[0])
 	del(boss_inputData[0])
 	del(fixed_inputData[0])
@@ -430,8 +427,6 @@ def init():
 
 	##########################################################
 
-
-init()
 
 channel = ''
 
