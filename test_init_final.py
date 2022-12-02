@@ -1163,8 +1163,6 @@ class taskCog(commands.Cog):
 									description= "```" + bossData[i][0] + bossData[i][4] + "```" + "\n" + bossData[i][0] + " 컷 >> " + "⚔️" + " << 클릭" ,
 									color=0x00ff00
 									)
-							if str(reaction) == "⚔️":
-								return ctx.send.message('aa')
 														
 						await self.bot.get_channel(channel).send(embed=embed, tts=False)
 						try:
