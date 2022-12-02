@@ -1160,7 +1160,7 @@ class taskCog(commands.Cog):
 									)
 						else :
 							embed = discord.Embed(
-									description= "```" + bossData[i][0] + bossData[i][4] + "\n" + bossData[i][0] + " 컷 >> " + "⚔️" + " << 클릭" + "```" ,
+									description= "```" + bossData[i][0] + bossData[i][4] + "```" + "\n" + bossData[i][0] + " 컷 >> " + "⚔️" + " << 클릭" ,
 									color=0x00ff00
 									)
 							if str(reaction) == "⚔️":
