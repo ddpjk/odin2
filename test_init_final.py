@@ -1159,10 +1159,7 @@ class taskCog(commands.Cog):
 									color=0x00ff00
 									)
 						else :
-							embed = discord.Embed(
-									description= "```" + bossData[i][0] + bossData[i][4] + "```" + '\n' + bossData[i][0] + ' ' + '컷' + '>>' + ' ' + '⚔️' + ' ' + '<< 클릭' ,
-									color=0x00ff00
-									)
+							return await ctx.send(f'"```" + bossData[i][0] + bossData[i][4] + "```" + '\n' + bossData[i][0] + ' ' + '컷' + '>>' + ' ' + '⚔️' + ' ' + '<< 클릭'')
 							if str(reaction) == "⚔️":
 								print('aa')
 														
