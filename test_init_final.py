@@ -243,15 +243,6 @@ def init():
 	file_data2 = file_data2.decode('utf-8')
 	fixed_inputData = file_data2.split('\n')
 
-	kill_inidata = repo.get_contents("kill_list.ini")
-	file_data5 = base64.b64decode(kill_inidata.content)
-	file_data5 = file_data5.decode('utf-8')
-	kill_inputData = file_data5.split('\n')
-
-	item_inidata = repo.get_contents("item_list.ini")
-	file_data6 = base64.b64decode(item_inidata.content)
-	file_data6 = file_data6.decode('utf-8')
-	item_inputData = file_data6.split('\n')
 
 	for i in range(len(fixed_inputData)):
 		FixedBossDateData.append(fixed_inputData[i])
@@ -284,8 +275,6 @@ def init():
 	del(command_inputData[0])
 	del(boss_inputData[0])
 	del(fixed_inputData[0])
-	del(kill_inputData[0])
-	del(item_inputData[0])
 
 	for data in boss_inputData:
 		if "kakaoOnOff" in data:
@@ -305,19 +294,11 @@ def init():
 		basicSetting.append(inputData[14][17:])    #basicSetting[5] : restarttime 분
 		basicSetting.append(inputData[1][15:])     #basicSetting[6] : voice채널 ID
 		basicSetting.append(inputData[2][14:])     #basicSetting[7] : text채널 ID
-		basicSetting.append(inputData[3][16:])     #basicSetting[8] : 사다리 채널 ID
 		basicSetting.append(inputData[13][14:])    #basicSetting[9] : !ㅂ 출력 수
-		basicSetting.append(inputData[17][11:])    #basicSetting[10] : json 파일명
-		basicSetting.append(inputData[4][17:])     #basicSetting[11] : 정산 채널 ID
-		basicSetting.append(inputData[16][12:])    #basicSetting[12] : sheet 이름
 		basicSetting.append(inputData[15][16:])    #basicSetting[13] : restart 주기
 		basicSetting.append(inputData[18][12:])    #basicSetting[14] : 시트 이름
 		basicSetting.append(inputData[19][12:])    #basicSetting[15] : 입력 셀
 		basicSetting.append(inputData[20][13:])    #basicSetting[16] : 출력 셀
-		basicSetting.append(inputData[12][13:])     #basicSetting[17] : 멍삭제횟수
-		basicSetting.append(inputData[5][14:])     #basicSetting[18] : kill채널 ID
-		basicSetting.append(inputData[6][16:])     #basicSetting[19] : racing 채널 ID
-		basicSetting.append(inputData[7][14:])     #basicSetting[20] : item 채널 ID
 		basicSetting.append(inputData[21][12:])     #basicSetting[21] : voice_use
 		basicSetting.append(inputData[11][11:])     #basicSetting[22] : mungChk2
 	except:
@@ -721,16 +702,7 @@ async def FixedBossDateSave():
 	contents = repo.get_contents("fixed_boss.ini")
 	repo.update_file(contents.path, "bossDB", FixedBossDateDataSTR, contents.sha)
 
-#사다리함수		
-async def LadderFunc(number, ladderlist, channelVal):
-	result_ladder = random.sample(ladderlist, number)
-	lose_member = [item for item in ladderlist if item not in result_ladder]
-	result_ladderSTR = ','.join(map(str, result_ladder))
-	embed = discord.Embed(title  = "🎲 사다리! 묻고 더블로 가!",color=0x00ff00)
-	embed.add_field(name = "👥 참가자", value =  f"```fix\n{', '.join(ladderlist)}```", inline=False)
-	embed.add_field(name = "😍 당첨", value =  f"```fix\n{', '.join(result_ladder)}```")
-	embed.add_field(name = "😭 낙첨", value =  f"```{', '.join(lose_member)}```")
-	await channelVal.send(embed=embed, tts=False)
+
 
 #data초기화
 async def init_data_list(filename, first_line : str = "-----------"):
