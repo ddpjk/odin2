@@ -1173,6 +1173,8 @@ class taskCog(commands.Cog):
 								return (reaction.message.id == cut_message.id) and (user.id == ctx.author.id) and (str(reaction) in emoji_list)
 							try:
 								reaction, user = await self.bot.wait_for('reaction_add', check = reaction_check, timeout = 300)
+							except asyncio.TimeoutError:
+								return await ctx.send(f"시간이 초과됐습니다. 수동으로 기입해주세요!!")
 							
 						await self.bot.get_channel(channel).send(embed=embed, tts=False)
 						try:
