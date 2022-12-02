@@ -265,9 +265,6 @@ def init():
 
 	for i in range(fixed_inputData.count('\r')):
 		fixed_inputData.remove('\r')
-	
-	for i in range(kill_inputData.count('\r')):
-		kill_inputData.remove('\r')
 
 	for i in range(item_inputData.count('\r')):
 		item_inputData.remove('\r')
