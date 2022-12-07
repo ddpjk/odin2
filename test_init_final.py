@@ -1145,7 +1145,6 @@ class taskCog(commands.Cog):
 					################ 보스 젠 시간 확인 ################ 
 					if bossTime[i] <= now and bossFlag0[i] == True and bossFlag[i] == True :
 						#print ('if ', bossTime[i])
-						emoji_list = ["⚔️"]
 						bossMungFlag[i] = True
 						tmp_bossTime[i] = bossTime[i]
 						tmp_bossTimeString[i] = tmp_bossTime[i].strftime('%H:%M:%S')
@@ -1159,11 +1158,24 @@ class taskCog(commands.Cog):
 									color=0x00ff00
 									)
 						else :
+							emoji_list = ["⚔️"]
 							cut_msg = discord.Embed(
 									description= "```" + bossData[i][0] + bossData[i][4] + "```" + "\n" + bossData[i][0] + " 컷 >> " + "⚔️" + " << 클릭" ,
 									color=0x00ff00
 									)
-							embed = cut_msg
+							for emoji in emoji_list:
+								await cut_msg.add_reaction(emoji)
+								
+							def reaction_check(reaction, user):
+								return (reaction.message.id == cut_message.id) and (user.id == ctx.author.id) and (str(reaction) in emoji_list)
+							try:
+								reaction, user = await self.bot.wait_for('reaction_add', check = reaction_check, timeout = 300)
+							except asyncio.TimeoutError:
+								return await ctx.send(f"시간이 초과됐습니다. 수동으로 기입해주세요.")
+							
+							if str(reaction) == "⚔️":
+								print('aa')
+							
 							 
 							#await cut_msg.add_reation("⚔️")
 							
