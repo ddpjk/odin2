@@ -1160,14 +1160,18 @@ class taskCog(commands.Cog):
 						else :
 							emoji_list = ["⚔️", "❌"]
 							cut_msg = discord.Embed(
-									description= "```" + bossData[i][0] + bossData[i][4] + "```" + "\n" + bossData[i][0] + " 컷 >> " + "⚔️" + " << 클릭" ,
+									description= "```" + bossData[i][0] + bossData[i][4] + "```" + "\n" + bossData[i][0] + " 컷 >> " + "⚔️" + "❌" + " << 클릭" ,
 									color=0x00ff00
 									)
-							for emoji in emoji_list:
-								await cut_msg.add_reaction(emoji)
+							embed = cut_msg
+							#msg = await message.channel.send(embed=embed)
+							await msg.add_reaction("⚔️")
+							await msg.add_reaction("❌")
+							#for emoji in emoji_list:
+							#	await cut_msg.add_reaction(emoji)
 								
-							def reaction_check(reaction, user):
-								return (reaction.message.id == cut_msg.id)
+							#def reaction_check(reaction, user):
+							#	return (reaction.message.id == cut_msg.id)
 							#try:
 							#	reaction, user = await self.bot.wait_for('reaction_add', check = reaction_check, timeout = 300)
 							#except asyncio.TimeoutError:
