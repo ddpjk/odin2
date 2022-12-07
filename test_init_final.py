@@ -1168,16 +1168,16 @@ class taskCog(commands.Cog):
 								
 							def reaction_check(reaction, user):
 								return (reaction.message.id == cut_msg.id) and (user.id == ctx.author.id) and (str(reaction) in emoji_list)
-							try:
-								reaction, user = await self.bot.wait_for('reaction_add', check = reaction_check, timeout = 300)
-							except asyncio.TimeoutError:
-								return await ctx.send(f"시간이 초과됐습니다. 수동으로 기입해주세요.")
+							#try:
+							#	reaction, user = await self.bot.wait_for('reaction_add', check = reaction_check, timeout = 300)
+							#except asyncio.TimeoutError:
+							#	return await ctx.send(f"시간이 초과됐습니다. 수동으로 기입해주세요.")
 							
-							if str(reaction) == "⚔️":
-								return await ctx.send(f"aa")
+							#if str(reaction) == "⚔️":
+							#	return await ctx.send(f"aa")
 							
-							else:
-								return await ctx.send(f"bb")
+							#else:
+							#	return await ctx.send(f"bb")
 							
 							 
 							#await cut_msg.add_reation("⚔️")
