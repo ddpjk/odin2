@@ -1174,7 +1174,10 @@ class taskCog(commands.Cog):
 								return await ctx.send(f"시간이 초과됐습니다. 수동으로 기입해주세요.")
 							
 							if str(reaction) == "⚔️":
-								print('aa')
+								return await ctx.send(f"aa")
+							
+							else:
+								return await ctx.send(f"bb")
 							
 							 
 							#await cut_msg.add_reation("⚔️")
