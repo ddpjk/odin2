@@ -1167,7 +1167,7 @@ class taskCog(commands.Cog):
 								await cut_msg.add_reaction(emoji)
 								
 							def reaction_check(reaction, user):
-								return (reaction.message.id == cut_msg.id) and (user.id == ctx.author.id) and (str(reaction) in emoji_list)
+								return (reaction.message.id == cut_msg.id)
 							#try:
 							#	reaction, user = await self.bot.wait_for('reaction_add', check = reaction_check, timeout = 300)
 							#except asyncio.TimeoutError:
